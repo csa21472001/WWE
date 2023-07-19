@@ -1,18 +1,14 @@
 package org.example;
 
-import java.util.Arrays;
-
 public class Authentication {
     private static final String allowedCharacters = "0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-    public static boolean check(String login, String password, String confirmPassword) throws WrongLoginException, WrongPasswordException {
+    public static void check(String login, String password, String confirmPassword) throws WrongLoginException, WrongPasswordException {
         checkForAllowedCharacters(login);
         checkForAllowedCharacters(password);
         checkLogin(login);
         checkPassword(password);
         checkConfirmPassword(password, confirmPassword);
-
-        return true;
     }
     private static boolean checkForAllowedCharacters(String str) {
         for (char symbol : str.toCharArray()) {
