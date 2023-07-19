@@ -14,7 +14,6 @@ public class Authentication {
 
         return true;
     }
-
     private static boolean checkForAllowedCharacters(String str) {
         for (char symbol : str.toCharArray()) {
             if (!allowedCharacters.contains(Character.toString(symbol))) {
@@ -24,19 +23,19 @@ public class Authentication {
         return true;
     }
 
-    private static void checkLogin(String login) throws WrongLoginException {
+    private static void checkLogin(String login){
         if (!checkForAllowedCharacters(login)) {
-            throw new WrongLoginException();
+            throw new WrongLoginException("Логин содержит недопустимые символы!");
         } else if (login.length() > 20){
-            throw new WrongLoginException();
+            throw new WrongLoginException("Логин должен содержать не более 20 символов!");
         }
     }
 
-    private static void checkPassword(String password) throws WrongPasswordException {
+    private static void checkPassword(String password)  {
         if ( !checkForAllowedCharacters(password)) {
             throw new WrongPasswordException(" Пароль содержит недопустимые символы!");
         } else if (password.length() > 20) {
-            throw new WrongPasswordException(" Логин должен содержать не более 20 символов!");
+            throw new WrongPasswordException(" Пароль должен содержать не более 20 символов!");
         }
     }
 
